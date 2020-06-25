@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: gl_main.aux
+The style file: pnas-new.bst
+Database file #1: DemPersp.bib
+You've used 21 entries,
+            1837 wiz_defined-function locations,
+            596 strings with 7556 characters,
+and the built_in function-call counts, 3501 in all, are:
+= -- 288
+> -- 167
+< -- 3
++ -- 56
+- -- 35
+* -- 251
+:= -- 534
+add.period$ -- 42
+call.type$ -- 21
+change.case$ -- 20
+chr.to.int$ -- 0
+cite$ -- 21
+duplicate$ -- 178
+empty$ -- 362
+format.name$ -- 35
+if$ -- 771
+int.to.chr$ -- 0
+int.to.str$ -- 21
+missing$ -- 9
+newline$ -- 87
+num.names$ -- 21
+pop$ -- 74
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 74
+stack$ -- 0
+substring$ -- 116
+swap$ -- 48
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 28
+width$ -- 23
+write$ -- 212

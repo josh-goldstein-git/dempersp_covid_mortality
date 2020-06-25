@@ -1,0 +1,13 @@
+In this file, we should explain what each .R program does and how to
+source() all of them to reproduce the figures and calculations in the
+paper.
+
+
+Note some of these files produce clean data (and don't necessarily have to be run everytime).
+These are:
+-- harmonize_covid_deaths.R --> ../data/cleaned/harmonize_covid_deaths.csv
+-- get_cohort_ex_period_2020.R --> ../data/cleaned/cohort_ex_period_2020.csv
+
+Others do calculations and produce figures.
+
+

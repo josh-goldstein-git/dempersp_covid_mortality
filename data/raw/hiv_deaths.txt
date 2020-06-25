@@ -1,0 +1,16 @@
+## HIV Deaths by age 1979-1998
+## https://wonder.cdc.gov/controller/datarequest/D16;jsessionid=065549FB24DEDBB21B11F3CA0E513FAD
+x Dx
+0 896
+1 1615
+5 850
+10 466
+15 553
+20 5581
+25 97481
+35 135872
+45 56784
+55 17616
+65 5131
+75 947
+85 142
