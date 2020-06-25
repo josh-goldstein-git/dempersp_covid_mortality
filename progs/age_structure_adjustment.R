@@ -23,9 +23,9 @@ Age2x <- function(Age)
     return(x)
 }
 
-expos_usa = fread("~/Documents/hmd/hmd_statistics/exposures/Exposures_1x1/USA.Exposures_1x1.txt")
+expos_usa = fread("../data/raw/hmd_exposures/USA.Exposures_1x1.txt")
 expos_usa[, x := Age2x(Age)]
-mort_usa = fread("~/Documents/hmd/hmd_statistics/death_rates/Mx_1x1/USA.Mx_1x1.txt")
+mort_usa = fread("../data/raw/USA.Mx_1x1.txt")
 mort_usa[, x := Age2x(Age)]
 ##
 Mx_80p = mort_usa[Year == 2017 & x >= 80]$Total
@@ -35,9 +35,9 @@ cdr_80p = sum(Mx_80p * Kx_80p)/sum(Kx_80p)
 ## [1] 0.09874335
 
 ## Now let's do Korea
-expos_kor = fread("~/Documents/hmd/hmd_statistics/exposures/Exposures_1x1/KOR.Exposures_1x1.txt")
+expos_kor = fread("../data/raw/hmd_exposures/KOR.Exposures_1x1.txt")
 expos_kor[, x := Age2x(Age)]
-mort_kor = fread("~/Documents/hmd/hmd_statistics/death_rates/Mx_1x1/KOR.Mx_1x1.txt")
+mort_kor = fread("../data/raw/KOR.Mx_1x1.txt")
 mort_kor[, x := Age2x(Age)]
 ##
 Mx_80p = mort_kor[Year == 2017 & x >= 80]$Total
@@ -56,9 +56,9 @@ adj_factor_kor = s_kor_cdr_80p / kor_cdr_80p
 ## [1] 1.005819
 
 ## now let's do Italy
-expos_ita = fread("~/Documents/hmd/hmd_statistics/exposures/Exposures_1x1/ITA.Exposures_1x1.txt", na.string = ".")
+expos_ita = fread("../data/raw/hmd_exposures/ITA.Exposures_1x1.txt", na.string = ".")
 expos_ita[, x := Age2x(Age)]
-mort_ita = fread("~/Documents/hmd/hmd_statistics/death_rates/Mx_1x1/ITA.Mx_1x1.txt", na.string = ".")
+mort_ita = fread("../data/raw/ITA.Mx_1x1.txt", na.string = ".")
 mort_ita[, x := Age2x(Age)]
 ##
 Mx_80p = mort_ita[Year == 2014 & x >= 80]$Total
@@ -76,7 +76,7 @@ adj_factor_ita = s_ita_cdr_80p / ita_cdr_80p
 
 ### wuhan
 
-mort_wuhan = fread("../data/Wuhan_Kx.csv")
+mort_wuhan = fread("../data/raw/Wuhan_Kx.csv")
 wuhan_Kx = mort_wuhan$"Population Size"
 names(wuhan_Kx) = mort_wuhan$Age
 
@@ -109,7 +109,7 @@ names(theta.vec) = code.vec
 for (i in 1:length(code.vec))
 {
     this_code = code.vec[i]
-    this_filename = paste0("~/Documents/hmd/hmd_statistics/exposures/Exposures_1x1/", this_code, ".Exposures_1x1.txt")
+    this_filename = paste0("../data/raw/hmd_exposures/", this_code, ".Exposures_1x1.txt")
     this_dt = fread(this_filename, na.string = ".")
     this_dt[, x := Age2x(Age)]
     this_Kx = this_dt[Year == max(Year) & x >= 80]$Total
@@ -143,3 +143,7 @@ names(theta_pretty) = c("England", "France", "Germany",
 ##  France     USA England   Spain   Italy Germany   Korea   Wuhan
 ##   0.997   1.000   1.036   1.051   1.067   1.098   1.160   1.162
 ## >
+
+
+
+

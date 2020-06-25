@@ -19,7 +19,7 @@ usa_Mx_80p = mort_usa[Year == 2017 & x >= 80]$Total
 names(usa_Mx_80p) = mort_usa[Year == 2017 & x >= 80]$x
 stan_Mx_80p = usa_Mx_80p[my_age_range] ## for Wuhan
 
-expos_usa = fread("../data/raw/USA.Exposures_1x1.txt")
+expos_usa = fread("../data/raw/hmd_exposures/USA.Exposures_1x1.txt")
 expos_usa[, x := Age2x(Age)]
 usa_Kx_80p = expos_usa[Year == 2017 & x >= 80]$Total
 names(usa_Kx_80p) = expos_usa[Year == 2017 & x >= 80]$x
@@ -34,7 +34,7 @@ names(theta.vec) = code.vec
 for (i in 1:length(code.vec))
 {
     this_code = code.vec[i]
-    this_filename = paste0("../data/raw/", this_code, ".Exposures_1x1.txt")
+    this_filename = paste0("../data/raw/hmd_exposures/", this_code, ".Exposures_1x1.txt")
     this_dt = fread(this_filename, na.string = ".")
     this_dt[, x := Age2x(Age)]
     this_Kx = this_dt[Year == max(Year) & x >= 80]$Total

@@ -57,7 +57,7 @@ Age2x <- function(Age)
     x = as.numeric(Age)
     return(x)
 }
-expos_usa = fread("~/Documents/hmd/hmd_statistics/exposures/Exposures_1x1/USA.Exposures_1x1.txt")
+expos_usa = fread("../data/raw/hmd_exposures/USA.Exposures_1x1.txt")
 expos_usa[, x := Age2x(Age)]
 expos_usa[, x10 := cut(x, c(age10, max_age), include.lowest = TRUE, right = FALSE)]
 nKx10 = expos_usa[Year == 2017, xtabs(Total ~ x10)]
@@ -106,3 +106,4 @@ dt10[, x10 := NULL]
 ## 4 -- output the cleaned data
 
 fwrite(dt10, "../data/cleaned/harmonize_covid_deaths.csv")
+

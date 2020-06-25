@@ -24,7 +24,7 @@ D_flu = 675 * thousand
 
 ## get e.dagger by period
 
-dt <- fread("~/Documents/hmd/hmd_statistics/lt_both/bltper_1x1/USA.bltper_1x1.txt")
+dt <- fread("../data/raw/USA_bltper_1x1.txt")
 radix = 10^5
 dt[, e.dagger := sum(dx * ex)/radix, by = Year]
 dt[, e0 := round(ex[Age == "0"]), by = Year]
@@ -54,7 +54,6 @@ age <- c(20, 30, 40, 50, 65) ## guessed mid-intervals
 sum(perc.by.age*age)/sum(perc.by.age)
 ## [1] 41.95
 
-
 mad_by_cause <- c("flu" = 30, ## rounding up from 28 peak in Gagnon et al.
                   "hiv" = 40, ## rounded up from 39.7
                   "opioids" = 42,
@@ -64,15 +63,13 @@ e.dagger_by_cause.hat <- c("flu" = dt[Age == round(mad_by_cause["flu"]) & Year =
                        "hiv" = dt[Age == round(mad_by_cause["hiv"]) & Year == 1990]$ex,
                        "opioids" = dt[Age == round(mad_by_cause["opioids"]) & Year == 2010]$ex,
                        "covid" = dt[Age == round(mad_by_cause["covid"]) & Year == 2017]$ex)
-
-
 ## measures
 D_cause.vec <- c(D_flu, D_hiv, D_opioids, D_covid)
 cdr_cause.vec <- 1000*D_cause.vec / pop.vec
 
 py_lost_ratio <- D_cause.vec * e.dagger_by_cause.hat / (D_all.vec * e.dagger_all_cause.hat)
 
-cbind(D_cause.vec, e.dagger_by_cause.hat, D_all.vec, e.dagger_all_cause.hat, py_lost_ratio)
+cbind(D_cause.vec, mad_by_cause, e.dagger_by_cause.hat, D_all.vec, e.dagger_all_cause.hat, py_lost_ratio)
 ##         D_cause.vec e.dagger_by_cause.hat D_all.vec e.dagger_all_cause.hat
 ## flu          675000                 38.80   1378000                  15.10
 ## hiv          675000                 38.03   2141400                  11.00
@@ -226,5 +223,7 @@ segments(x0 = bp[1]-w/2, x1 = bp[1]+w/2, y0 = py6[1] * 250/1000, lty = 2)
 text(x = bp[1], y = py6[1]*250/1000, round(py6[1]*250/1000, 2), pos = 3,
           cex = .8)
  dev.off()
- system("open ../text_and_figs/hiv_plus_new_dash.pdf")
+ system("open ../text_and_figs/fig4_hiv_plus_new_dash.pdf")
 ## system("sips -s format png ../figures/hiv_plus_new_dash.pdf --out ../figures/hiv_plus_new_dash.png")
+
+ 

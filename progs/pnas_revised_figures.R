@@ -7,7 +7,6 @@ library(data.table)
 ## fig4 -- comparative epidemics (see  "hiv_and_other_new.R")
 
 
-
 ## 1 -- 4 panel figure of rates observed and normalized
 
 dt = fread("../data/cleaned/harmonize_covid_deaths.csv")
@@ -20,12 +19,7 @@ nMx.mat_adj = nMx.mat_unadjusted
 nMx.mat_adj["80",] = my_theta * nMx.mat_unadjusted["80", names(my_theta)]
 nMx.mat = nMx.mat_adj
 
-
 nMx_norm.mat = prop.table(nMx.mat, 2)
-
-
-
-
 
 
 ## Now plot the results
@@ -132,7 +126,7 @@ million = 10^6
 thousand = 1000
 D <- 1 * million
 
-dt <- fread("../data/raw/USA.Exposures_1x1.txt")
+dt <- fread("../data/raw/hmd_exposures/USA.Exposures_1x1.txt")
 dt <- dt[Year == 2017]
 Kx <- dt$Total
 sum(Kx)/million ## 325 ...

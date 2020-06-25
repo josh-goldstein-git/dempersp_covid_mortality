@@ -39,8 +39,8 @@ for (i in 1:length(code.vec))
 {
     this_code = code.vec[i]
     print(this_code)
-    this_file = paste0("~/Documents/hmd/hmd_statistics/death_rates/Mx_5x1/",
-                      this_code, ".Mx_5x1.txt")
+    this_file = paste0("../data/raw/hmd_life_tables/",
+                      this_code, "_Mx_5x1.txt")
     dt = fread(this_file, na.string = ".")
     out = dt[Year == max(Year),
              .("Year" =  max(Year),
@@ -68,7 +68,7 @@ for (i in 1:length(code.vec))
 ## 7:     USA 0.092
 ## 8:   Wuhan 0.099
 
-pdf("../figures/gompertz_scatter.pdf")
+pdf("../text_and_figs/fig2_gompertz_scatter.pdf")
 par(mfrow = c(1,1))
 plot(result.mat[,"b"], tmp$b[-nrow(tmp)],
      ylab = "Rate of increase with age from COVID-19 mortality",
@@ -89,10 +89,10 @@ myadj["Spain"] = 0
 text(result.mat[,"b"], tmp$b[-nrow(tmp)], tmp$Country[-nrow(tmp)],
       pos = mypos)
 dev.off()
-system("open ../figures/gompertz_scatter.pdf")
+system("open ../text_and_figs/fig2_gompertz_scatter.pdf")
 
 #####################
-## temporary aging ##
+## temporary aging Table 1 ##
 #####################
 
 beta = .1
@@ -207,7 +207,7 @@ d.e0.hat = 1/3 * H * e0.without.covid
 
 
 ## we could scale the pop up
-dt <- fread("../data/raw/USA.Exposures_1x1.txt")
+dt <- fread("../data/raw/hmd_exposures/USA.Exposures_1x1.txt")
 dt <- dt[Year == 2017]
 Kx <- dt$Total
 
@@ -231,7 +231,7 @@ N2020/N2017
 
 ## So we take 2017 pop and get remaining life expectancy
 
-dt <- fread("../data/raw/USA.Exposures_1x1.txt")
+dt <- fread("../data/raw/hmd_exposures/USA.Exposures_1x1.txt")
 dt <- dt[Year == 2017]
 Kx <- dt$Total
 names(Kx) = dt$Age
@@ -368,3 +368,4 @@ abline(h = seq(1, 2, .25), col = "grey")
 points(c(45, 60, 70, 80, 90),
        c(1.44, 1.37, 1.34, 1.26, 1.12),
        pch = 19)
+
