@@ -1,8 +1,8 @@
-## I think this supercedes "age_structure_adjustment.R"
-## need to check and if so, delete the other file
+#######################################
+# Produce open age group adjustments
+#######################################
 
-## produce the theta for adjustment
-
+## produces adjustment factors
 
 ## 0 -- standard
 
@@ -75,7 +75,6 @@ theta_wuhan = stan_cdr_usa / stan_cdr_wuhan
 lines(names(wuhan_Kx_80p), prop.table(wuhan_Kx_80p), type = "l", col = "red")
 
 ## 3 -- put together
-
 
 theta_all.vec = c(theta.vec, "WUHAN" = theta_wuhan)
 theta_pretty = theta_all.vec
