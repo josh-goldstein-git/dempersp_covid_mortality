@@ -1,5 +1,6 @@
 These 'R' scripts generate the figures and the tables for "Demographic Perspectives and the Mortality of Covid-19 and other Epidemics."
 
-The 00-prep_data.R script produces cleaned datasets used by the other scripts (and only needs to be run once). 
+The 00-prep_data.R script produces cleaned data sets used by the other scripts. It only needs to be run once. 
 
+The scripts to generate figures and tables are self-contained. 
 
