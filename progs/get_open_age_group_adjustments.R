@@ -13,7 +13,7 @@ Age2x <- function(Age)
     x = as.numeric(Age)
     return(x)
 }
-mort_usa = fread("../data/raw/USA.Mx_1x1.txt")
+mort_usa = fread("../data/raw/hmd_life_tables/USA.Mx_1x1.txt")
 mort_usa[, x := Age2x(Age)]
 usa_Mx_80p = mort_usa[Year == 2017 & x >= 80]$Total
 names(usa_Mx_80p) = mort_usa[Year == 2017 & x >= 80]$x

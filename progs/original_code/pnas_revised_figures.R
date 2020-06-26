@@ -21,7 +21,6 @@ nMx.mat = nMx.mat_adj
 
 nMx_norm.mat = prop.table(nMx.mat, 2)
 
-
 ## Now plot the results
 my_cex_axis = .9
 my_x = seq(0, 80, 10)
